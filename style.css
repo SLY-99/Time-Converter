@@ -1,0 +1,44 @@
+.container{
+    width: 1000px;
+    margin: 0px auto;
+}
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.text{
+    margin: 0px;
+    margin-right: 20px;
+    font-size: 20px;
+}
+.mini-wrapper{
+    display: flex;
+}
+.box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 180px;
+    height: 180px;
+    border-radius: 10px;
+    border: 1px solid ;
+    margin-top: 50px;
+    margin-right: 20px;
+}
+.img{
+    width: 70px;
+    margin-top: 20px;
+}
+.box-text{
+    margin: 0px;
+    margin-top: 5px;
+}
+#input{
+    width: 200px;
+    height: 25px;
+}
+#btn{
+    height: 30px;
+    margin-left: 20px;
+}
