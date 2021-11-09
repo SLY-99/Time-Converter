@@ -5,7 +5,6 @@ const elTittle2 = document.getElementById("bicycle");
 const elTittle3 = document.getElementById("car");
 const elTittle4 = document.getElementById("plane");
 
-
 let walkSpeed = 3.6;
 let bikeSpeed = 20.1;
 let carSpeed = 70;
@@ -20,7 +19,6 @@ elForm.addEventListener('submit', function(e){
         let walkHourRemain = walkResult%3600;
         let walkMinute = Math.floor(walkHourRemain/60);
         let walkMinuteRemain = Math.floor(walkHourRemain%60);
-       
         elTittle1.textContent = walkHour + " h : " + walkMinute + " min : " + walkMinuteRemain + " sek";
 
         let bikeResult = (Number(elInput.value) / bikeSpeed)*3600;
@@ -43,6 +41,5 @@ elForm.addEventListener('submit', function(e){
         let planeMinute = Math.floor(planeHourRemain/60);
         let planeMinuteRemain = Math.floor(planeHourRemain%60);
         elTittle4.textContent = planeHour + " h : " + planeMinute + " min : " + planeMinuteRemain + " sek";
-    
 
 })
