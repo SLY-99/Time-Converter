@@ -1,45 +1,51 @@
 const elForm = document.getElementById("form");
-const elInput = document.getElementById("input");
-const elTittle1 = document.getElementById("walk");
-const elTittle2 = document.getElementById("bicycle");
-const elTittle3 = document.getElementById("car");
-const elTittle4 = document.getElementById("plane");
+const elInputDistance = document.getElementById("input");
+const elFoot = document.getElementById("walk");
+const elBike = document.getElementById("bicycle");
+const elCar = document.getElementById("car");
+const elPlane = document.getElementById("plane");
 
 let walkSpeed = 3.6;
 let bikeSpeed = 20.1;
 let carSpeed = 70;
 let planeSpeed = 800;
 
-elForm.addEventListener('submit', function(e){
-    e.preventDefault()
+
+
+elForm.addEventListener('submit', function(evt) {
+    evt.preventDefault();
+    var inputDistance = Number(elInputDistance.value.trim());
+
+    if (inputDistance <= 0) {
+        alert("Nuldan katta raqam kiriting");
+        return console.log("Nuldan katta raqam kiriting");
+    } else if (isNaN(inputDistance)) {
+        alert("Raqam kiriting");
+        return console.log("Raqam kiriting");
+    }
     
-
-        let walkResult = (Number(elInput.value) / walkSpeed)*3600;
-        let walkHour = Math.floor(walkResult/3600);
-        let walkHourRemain = walkResult%3600;
-        let walkMinute = Math.floor(walkHourRemain/60);
-        let walkMinuteRemain = Math.floor(walkHourRemain%60);
-        elTittle1.textContent = walkHour + " h : " + walkMinute + " min : " + walkMinuteRemain + " sek";
-
-        let bikeResult = (Number(elInput.value) / bikeSpeed)*3600;
-        let bikeHour = Math.floor(bikeResult/3600);
-        let bikeHourRemain = bikeResult%3600;
-        let bikeMinute = Math.floor(bikeHourRemain/60);
-        let bikeMinuteRemain = Math.floor(bikeHourRemain%60);
-        elTittle2.textContent = bikeHour + " h : " + bikeMinute + " min : " + bikeMinuteRemain + " sek";
-
-        let carResult = (Number(elInput.value) / carSpeed)*3600;
-        let carHour = Math.floor(carResult/3600);
-        let carHourRemain = carResult%3600;
-        let carMinute = Math.floor(carHourRemain/60);
-        let carMinuteRemain = Math.floor(carHourRemain%60);
-        elTittle3.textContent = carHour + " h : " + carMinute + " min : " + carMinuteRemain + " sek";
-
-        let planeResult = (Number(elInput.value) / planeSpeed)*3600;
-        let planeHour = Math.floor(planeResult/3600);
-        let planeHourRemain = planeResult%3600;
-        let planeMinute = Math.floor(planeHourRemain/60);
-        let planeMinuteRemain = Math.floor(planeHourRemain%60);
-        elTittle4.textContent = planeHour + " h : " + planeMinute + " min : " + planeMinuteRemain + " sek";
-
+    elFoot.textContent = calculateDistance(inputDistance, walkSpeed);
+    elBike.textContent = calculateDistance(inputDistance, bikeSpeed);
+    elCar.textContent = calculateDistance(inputDistance, carSpeed);
+    elPlane.textContent = calculateDistance(inputDistance, planeSpeed);
 })
+
+
+
+function calculateDistance(distance, speed) {
+    var hours = Math.floor(distance / speed);
+    var minuts = Math.floor((distance / speed - hours) * 60);
+    var seconds = Math.ceil(((distance / speed - hours) * 60 - minuts) * 60);
+    
+    var minutjon = minuts? `${minuts} minut` : "" ;
+    var secundjon = seconds? `${seconds} secund` : "" ;
+
+    if (hours === 0 && minuts === 0) {
+        return `${minutjon} ${secundjon}`
+    } else if(hours === 0) {
+        return `${minutjon} ${secundjon}`
+    } else {
+        return `${hours} soat ${minutjon} ${secundjon}`
+    }
+
+}
